@@ -1,0 +1,73 @@
+{
+  "datasets" : [ {
+    "name" : "b8058542",
+    "displayName" : "trips",
+    "query" : "SELECT \n  DATE(tpep_pickup_datetime) AS pickup_date,\n  AVG(trip_distance) AS avg_distance\n\nFROM \n  main.nyctaxi.trips\n\nWHERE \n  YEAR(tpep_pickup_datetime) = 2016\n\nGROUP BY \n  DATE(tpep_pickup_datetime)\n\nORDER BY \n  pickup_date"
+  } ],
+  "pages" : [ {
+    "name" : "02867e8b",
+    "displayName" : "To też inaczej łąś
+    
+    ",
+    "layout" : [ {
+      "widget" : {
+        "name" : "ea67bec2",
+        "textbox_spec" : "Hello World!"
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 6,
+        "width" : 6,
+        "height" : 2
+      }
+    }, {
+      "widget" : {
+        "name" : "e3019749",
+        "queries" : [ {
+          "name" : "main_query",
+          "query" : {
+            "datasetName" : "b8058542",
+            "fields" : [ {
+              "name" : "daily(pickup_date)",
+              "expression" : "DATE_TRUNC(\"DAY\", `pickup_date`)"
+            }, {
+              "name" : "sum(avg_distance)",
+              "expression" : "SUM(`avg_distance`)"
+            } ],
+            "disaggregated" : false
+          }
+        } ],
+        "spec" : {
+          "version" : 3,
+          "widgetType" : "line",
+          "encodings" : {
+            "x" : {
+              "fieldName" : "daily(pickup_date)",
+              "scale" : {
+                "type" : "temporal"
+              },
+              "displayName" : "pickup_date"
+            },
+            "y" : {
+              "fieldName" : "sum(avg_distance)",
+              "scale" : {
+                "type" : "quantitative"
+              },
+              "displayName" : "Sum of avg_distance"
+            }
+          },
+          "frame" : {
+            "showTitle" : true,
+            "title" : "nowa zepsuta"
+          }
+        }
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 0,
+        "width" : 6,
+        "height" : 6
+      }
+    } ]
+  } ]
+}
